@@ -69,3 +69,22 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+// Hide Header on Scroll
+let lastScrollTop = 0;
+const header = document.querySelector('header');
+const scrollThreshold = 100; // Mínimo scroll antes de actuar
+
+window.addEventListener('scroll', function() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+  if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+    // Scroll hacia abajo
+    header.classList.add('nav-hidden');
+  } else {
+    // Scroll hacia arriba
+    header.classList.remove('nav-hidden');
+  }
+  
+  lastScrollTop = scrollTop;
+});
