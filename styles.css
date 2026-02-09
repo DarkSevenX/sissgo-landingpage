@@ -172,14 +172,60 @@ main {
 }
 
 .hero {
-  padding: 45px 0 48px;
+  padding: 0px 0 48px;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 40px;
+.hero-vertical-layout {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 50px;
+  padding-top: 20px;
+}
+
+.hero-visual-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center; /* Centrado vertical del grupo */
+  gap: 40px;
+  width: 100%;
+  min-height: 85vh;
+  padding-bottom: 40px;
+}
+
+.hero-logo-large {
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(52, 152, 219, 0.15));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.hero-content-bottom {
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-content-bottom .hero-tags,
+.hero-content-bottom .hero-cta,
+.hero-content-bottom .hero-kpis {
+  justify-content: center;
+}
+
+.hero-content-bottom .hero-subtitle {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .eyebrow {
@@ -260,6 +306,8 @@ main {
   border: 1px solid rgba(148, 163, 184, 0.25);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 420px; /* Igualar ancho visual con el logo */
 }
 
 .hero-card::before {
