@@ -41,9 +41,9 @@
   <main>
     <section class="hero">
       <div class="container hero-vertical-layout">
-        <div class="hero-visual-top animate-on-scroll">
-          <img src="logotipo-Photoroom.png" alt="Sissgo Logo" class="hero-logo-large">
-          <div class="hero-card">
+        <div class="hero-visual-top">
+          <!-- <img src="logotipo.png" alt="Sissgo Logo" class="hero-logo-large animate-on-scroll"> -->
+          <!-- <div class="hero-card animate-on-scroll delay-100">
             <div class="hero-card-header">
               <div class="hero-card-title">Panel de IPS • Vista directa</div>
               <div class="hero-pill">Agenda del día</div>
@@ -68,27 +68,27 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="hero-content-bottom animate-on-scroll">
-          <div class="eyebrow">Software para el sector salud</div>
-          <!-- <h1>
+        <div class="hero-content-bottom">
+          <div class="eyebrow animate-on-scroll delay-200">Software para el sector salud</div>
+          <h1 class="animate-on-scroll delay-300">
             Plataforma <span class="gradient-text">web integral para</span>
             <span class="gradient-text">IPS</span>
-          </h1> -->
-          <!-- <p class="hero-subtitle">
+          </h1>
+          <p class="hero-subtitle animate-on-scroll delay-400">
             Sissgo+ S.A.S integra contabilidad, procesos asistenciales, nómina,
             historias clínicas y autogestión de citas de forma integral, facíl de usar y en cosntante actualización de acuerdo a la normativa vigente en Colombia.
-          </p> -->
+          </p>
 
-          <div class="hero-tags">
+          <div class="hero-tags animate-on-scroll delay-500">
             <span class="tag">Autogestión de citas</span>
             <span class="tag">Historias clínicas</span>
             <span class="tag">Recordatorios por WhatsApp</span>
             <span class="tag">Contabilidad y nómina</span>
           </div>
 
-          <div class="hero-cta">
+          <div class="hero-cta animate-on-scroll delay-600">
             <button class="btn btn-primary"
               onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
               Conocer más
@@ -97,14 +97,23 @@
               Contacta con nosotros
             </button>
           </div>
-          <p class="hero-note">
+          <!-- <p class="hero-note animate-on-scroll delay-700">
             Plataforma 100% web, lista para IPS, clínicas y consultorios en Colombia.
-          </p>
+          </p> -->
 
-          <div class="hero-kpis">
-            <!-- <div class="hero-kpi">
-              <strong>+30</strong><br />Instituciones de salud gestionando su operación
-            </div> -->
+          <div class="hero-kpis animate-on-scroll delay-1500">
+            <div class="hero-kpi">
+              <strong><span class="counter" data-target="30" data-prefix="+">+0</span></strong><br />Instituciones de salud
+            </div>
+            <div class="hero-kpi">
+              <strong><span class="counter" data-target="15" data-prefix="+">+0</span>K</strong><br />Pacientes atendidos
+            </div>
+            <div class="hero-kpi">
+              <strong><span class="counter" data-target="98" data-prefix="" data-suffix="%">0%</span></strong><br />Satisfacción clientes
+            </div>
+            <div class="hero-kpi">
+              <!-- <strong>+30</strong><br />Instituciones de salud gestionando su operación -->
+            </div>
             <!-- <div class="hero-kpi">
               <strong>24/7</strong><br />Acceso a la plataforma desde cualquier dispositivo
             </div> -->
@@ -127,21 +136,21 @@
         <div class="benefits-grid animate-on-scroll">
           <div class="benefits-stats-card">
             <div class="benefit-stat">
-              <div class="benefit-stat-number">-40<span>%</span></div>
+              <div class="benefit-stat-number counter" data-target="40" data-prefix="-" data-suffix="<span>%</span>">-0<span>%</span></div>
               <div class="stat-info">
                 <div class="benefit-stat-label">Inasistencias</div>
                 <div class="benefit-stat-desc">Menos citas perdidas</div>
               </div>
             </div>
             <div class="benefit-stat">
-              <div class="benefit-stat-number">+60<span>%</span></div>
+              <div class="benefit-stat-number counter" data-target="60" data-prefix="+" data-suffix="<span>%</span>">+0<span>%</span></div>
               <div class="stat-info">
                 <div class="benefit-stat-label">Eficiencia Operativa</div>
                 <div class="benefit-stat-desc">Procesos más ágiles</div>
               </div>
             </div>
             <div class="benefit-stat">
-              <div class="benefit-stat-number">-50<span>%</span></div>
+              <div class="benefit-stat-number counter" data-target="50" data-prefix="-" data-suffix="<span>%</span>">-0<span>%</span></div>
               <div class="stat-info">
                 <div class="benefit-stat-label">Uso de Papelería</div>
                 <div class="benefit-stat-desc">Transformación digital</div>

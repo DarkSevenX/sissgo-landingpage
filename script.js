@@ -70,21 +70,62 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-// Hide Header on Scroll
+// Navbar Scroll Logic
 let lastScrollTop = 0;
 const header = document.querySelector('header');
-const scrollThreshold = 100; // Mínimo scroll antes de actuar
 
 window.addEventListener('scroll', function() {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   
-  if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-    // Scroll hacia abajo
+  if (scrollTop > lastScrollTop && scrollTop > 100) {
+    // Scrolling down
     header.classList.add('nav-hidden');
   } else {
-    // Scroll hacia arriba
+    // Scrolling up
     header.classList.remove('nav-hidden');
   }
   
-  lastScrollTop = scrollTop;
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+}, { passive: true });
+
+// Counter Animation
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const counter = entry.target;
+      const target = +counter.getAttribute('data-target');
+      const prefix = counter.getAttribute('data-prefix') || '';
+      const suffix = counter.getAttribute('data-suffix') || '';
+      // Aumentamos la duración a 3500ms (3.5 segundos) para que sea más lento
+      const speed = 3500; 
+      const increment = target / (speed / 16); 
+      
+      let current = 0;
+      
+      const updateCount = () => {
+        current += increment;
+        
+        if (current < target) {
+          counter.innerHTML = `${prefix}${Math.ceil(current)}${suffix}`;
+          requestAnimationFrame(updateCount);
+        } else {
+          counter.innerHTML = `${prefix}${target}${suffix}`;
+        }
+      };
+      
+      // Añadimos un pequeño delay de 500ms antes de empezar a contar
+      // para asegurar que el elemento ya es visible
+      setTimeout(() => {
+        updateCount();
+      }, 500);
+      
+      counterObserver.unobserve(counter);
+    }
+  });
+}, {
+  threshold: 0.5
+});
+
+document.querySelectorAll('.counter').forEach(counter => {
+  counterObserver.observe(counter);
 });
