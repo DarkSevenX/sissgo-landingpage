@@ -59,11 +59,11 @@ header {
   z-index: 50;
   backdrop-filter: blur(18px);
   background: rgba(247, 249, 252, 0.82);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  /* border-bottom: 1px solid rgba(148, 163, 184, 0.25); */
   transition: transform 0.3s ease-in-out;
 }
 
-header.nav-hidden {
+header.hidden {
   transform: translateY(-100%);
 }
 
@@ -84,7 +84,7 @@ header.nav-hidden {
 }
 
 .logo-img {
-  height: 50px;
+  height: 68px;
   width: auto;
   object-fit: contain;
 }
@@ -131,6 +131,16 @@ nav a:hover::after {
   width: 100%;
 }
 
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--primary);
+  cursor: pointer;
+  z-index: 1001;
+}
+
 .nav-cta {
   display: flex;
   align-items: center;
@@ -138,10 +148,10 @@ nav a:hover::after {
 }
 
 .btn {
-  border-radius: 999px;
+  border-radius: 6px;
   border: none;
-  padding: 10px 22px;
-  font-size: 0.9rem;
+  padding: 14px 23px;
+  font-size: 1rem;
   cursor: pointer;
   font-weight: 500;
   display: inline-flex;
@@ -177,7 +187,73 @@ main {
 }
 
 .hero {
-  padding: 45px 0 150px;
+  padding: 45px 0 100px;
+  min-height: 88.5vh;
+  /* border-bottom: 1px solid black; */
+  position: relative;
+  overflow: visible;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ... existing commented code ... */
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  max-width: 600px;
+  height: 65%;
+  background-image: url('fondo-esquina-sincuadro.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: contain;
+  z-index: 1;
+  pointer-events: none;
+  animation: slide-corner-in 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes slide-corner-in {
+  0% {
+    opacity: 0;
+    transform: translate(100px, 100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: auto;
+    padding-bottom: 60px;
+  }
+
+  .hero::after {
+    width: 80%;
+    height: 40%;
+    /* opacity: 0.6; */
+  }
+
+  .hero-vertical-layout {
+    gap: 30px;
+  }
+
+  .hero-visual-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero-logo-large {
+    max-width: 200px;
+  }
 }
 
 .hero-vertical-layout {
@@ -236,7 +312,7 @@ main {
   letter-spacing: 0.16em;
   color: var(--primary);
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 25px;
 }
 
 .hero h1 {
@@ -255,7 +331,7 @@ main {
   font-size: 0.98rem;
   color: var(--muted);
   max-width: 460px;
-  margin-bottom: 18px;
+  margin-bottom: 49px;
 }
 
 .hero-tags {
@@ -431,11 +507,11 @@ main {
 }
 
 .benefits-stats-card {
-  background: var(--card-bg);
+  /* background: var(--card-bg); */
   border-radius: var(--radius);
   padding: 30px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  box-shadow: var(--shadow);
+  /* border: 1px solid rgba(148, 163, 184, 0.2); */
+  /* box-shadow: var(--shadow); */
   display: flex;
   justify-content: space-around;
   gap: 20px;
@@ -458,7 +534,7 @@ main {
 }
 
 .benefit-stat:hover {
-  background: rgba(52, 152, 219, 0.05);
+  /* background: rgba(52, 152, 219, 0.05); */
   transform: translateY(-5px);
 }
 
@@ -530,6 +606,13 @@ main {
   gap: 24px;
 }
 
+/* Estilos decorativos para fondos */
+.section-bg-gradient {
+  position: relative;
+  background: radial-gradient(circle at top right, rgba(52, 152, 219, 0.08), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(0, 216, 214, 0.05), transparent 40%);
+}
+
 .benefit-item-v2 {
   display: flex;
   flex-direction: column;
@@ -537,20 +620,37 @@ main {
   text-align: center;
   gap: 16px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.5);
+  /* background: white; */
   border-radius: var(--radius);
   transition: all var(--transition);
+  /* border: 1px solid rgba(52, 152, 219, 0.1); */
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.05);
 }
 
 .benefit-item-v2:hover {
-  background: white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  /* background: white; */
+  box-shadow: 0 15px 35px rgba(44, 126, 180, 0.219);
   transform: translateY(-5px);
+  /* border-color: rgba(52, 152, 219, 0.3); */
 }
 
 .benefit-item-v2 i {
   font-size: 1.8rem;
   color: var(--primary);
+  background: rgba(52, 152, 219, 0.1);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all var(--transition);
+}
+
+.benefit-item-v2:hover i {
+  background: var(--primary);
+  color: white;
+  transform: rotate(10deg);
 }
 
 .benefit-item-v2 h3 {
@@ -617,23 +717,49 @@ section:nth-of-type(even) {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .card {
   background: rgba(255, 255, 255, 0.98);
   border-radius: var(--radius);
-  padding: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  padding: 19px;
+  border: 1px solid rgba(48, 153, 223, 0.205); 
+  box-shadow: 0 10px 12px rgba(15, 23, 42, 0.185);
+  /* transition: all 1s ease-in-out;  */
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  padding-bottom: 70px; /* Espacio extra para la imagen */
 }
 
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 70px;
+  width: 76%;
+  height: 132px; /* Ajusta esto según el alto visible que quieras de la imagen */
+  background-image: url('fondo-esquina-sincuadro-pequeña.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* hacer mas grande al pasar el mouse */
 .card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(52, 152, 219, 0.6);
-  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.15);
+  transform: scale(1.01) !important;
+  box-shadow: 0 0 10px rgba(0, 140, 255, 0.8);
+}
+
+.card-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 12px;
 }
 
 .card-icon {
@@ -643,34 +769,129 @@ section:nth-of-type(even) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(52, 152, 219, 0.1);
-  color: var(--primary);
-  margin-bottom: 16px;
+  /* background: rgba(52, 152, 219, 0.1); */
+  color: black;
+  /* margin-bottom: 16px; Eliminado porque ahora se maneja en el header flex */
   font-size: 1.4rem;
-  transition: all var(--transition);
-}
-
-.card:hover .card-icon {
-  background: var(--primary);
-  color: white;
-  transform: scale(1.1) rotate(-5deg);
+  transition: all 0.1s ease-in-out;
+  flex-shrink: 0; /* Evita que el icono se aplaste */
 }
 
 .card h3 {
-  font-size: 0.95rem;
-  margin-bottom: 6px;
+  font-size: 1.1rem;
+  margin-bottom: 0; /* Eliminado el margen inferior ya que está centrado verticalmente */
+  text-align: left;
+  line-height: 1.3;
 }
 
 .card p {
   font-size: 0.84rem;
-  color: var(--muted);
+  color: #283547;
   margin-bottom: 8px;
+}
+
+/* Módulos Background Animado */
+.section-modules-bg {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+}
+
+.relative-z2 {
+  position: relative;
+  z-index: 2;
+}
+
+.modules-bg-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.module-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(25px);
+  opacity: 0.6;
+}
+
+.shape-1 {
+  top: 10%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: rgba(3, 147, 243, 0.178);
+  animation: orbit-1 10s infinite linear;
+}
+
+.shape-2 {
+  bottom: 20%;
+  right: 15%;
+  width: 300px;
+  height: 300px;
+  /* background: rgba(20, 138, 216, 0.274); */
+  background: rgba(134, 63, 201, 0.116);
+  animation: orbit-2 15s infinite linear;
+}
+
+.shape-3 {
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background: rgba(14, 219, 216, 0.164);
+  animation: orbit-3 10s infinite linear;
+}
+
+.shape-4 {
+  top: 20%;
+  right: 40%;
+  width: 250px;
+  height: 250px;
+  background: rgba(139, 57, 216, 0.123); /* Un toque morado sutil */
+  animation: orbit-4 15s infinite linear;
+}
+
+@keyframes orbit-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(300px, 100px) scale(1.1); }
+  50% { transform: translate(500px, 400px) scale(0.9); }
+  75% { transform: translate(100px, 300px) scale(1.05); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orbit-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-400px, -200px) scale(1.1); }
+  66% { transform: translate(-200px, -400px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orbit-3 {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-300px, 200px) scale(1.2); }
+  50% { transform: translate(-100px, -200px) scale(0.8); }
+  75% { transform: translate(300px, -100px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orbit-4 {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(200px, -200px) scale(0.9); }
+  50% { transform: translate(-200px, 100px) scale(1.1); }
+  75% { transform: translate(-100px, -300px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
 .card-tag {
   font-size: 0.74rem;
   color: #4B5563;
   padding: 4px 10px;
+  /* border: 1px solid rgb(35, 56, 148); */
   border-radius: 999px;
   background: rgba(226, 232, 240, 0.7);
   display: inline-block;
@@ -805,7 +1026,7 @@ footer {
 }
 
 .footer-brand .logo-img {
-  background: white;
+  /* background: white; */
   padding: 8px 12px;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -1110,6 +1331,10 @@ footer {
 }
 
 @media (max-width: 920px) {
+  .logo-img {
+    height: 80px;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
   }
@@ -1134,8 +1359,43 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  nav ul {
-    display: none;
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    padding-top: 100px;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    width: 100%;
+  }
+
+  .nav-menu a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text);
   }
 }
 
@@ -1177,3 +1437,8 @@ footer {
 .delay-700 { transition-delay: 0.7s; }
 .delay-800 { transition-delay: 0.8s; }
 .delay-1500 { transition-delay: 1.5s; }
+
+/* FIX: Combinar transiciones para que el hover de la card funcione bien */
+.card.animate-on-scroll {
+  transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.3s ease, border-color var(--transition);
+}

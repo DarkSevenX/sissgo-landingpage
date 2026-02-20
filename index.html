@@ -19,9 +19,14 @@
   <header>
     <div class="container nav">
       <a class="logo" href="#">
-        <img class="logo-img" src="logotipo.png" alt="Sissgo+ S.A.S" />
+        <img class="logo-img" src="logotipo-Photoroom .png" alt="Sissgo+ S.A.S" />
       </a>
-      <nav>
+
+      <button class="mobile-menu-btn" aria-label="Abrir menú">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <nav class="nav-menu">
         <ul>
           <li><a href="#beneficios">Beneficios</a></li>
           <li><a href="#modulos">Módulos</a></li>
@@ -71,26 +76,26 @@
         </div> -->
 
         <div class="hero-content-bottom">
-          <div class="eyebrow animate-on-scroll delay-200">Software para el sector salud</div>
           <h1 class="animate-on-scroll delay-300">
             Plataforma <span class="gradient-text">web integral para</span>
             <span class="gradient-text">IPS</span>
           </h1>
+          <div class="eyebrow animate-on-scroll delay-200">Software para el sector salud</div>
           <p class="hero-subtitle animate-on-scroll delay-400">
             Sissgo+ S.A.S integra contabilidad, procesos asistenciales, nómina,
-            historias clínicas y autogestión de citas de forma integral, facíl de usar y en cosntante actualización de acuerdo a la normativa vigente en Colombia.
+            historias clínicas y autogestión de citas de forma integral, fácil de usar 
           </p>
 
-          <div class="hero-tags animate-on-scroll delay-500">
+          <!-- <div class="hero-tags animate-on-scroll delay-500">
             <span class="tag">Autogestión de citas</span>
             <span class="tag">Historias clínicas</span>
             <span class="tag">Recordatorios por WhatsApp</span>
             <span class="tag">Contabilidad y nómina</span>
-          </div>
+          </div> -->
 
           <div class="hero-cta animate-on-scroll delay-600">
             <button class="btn btn-primary"
-              onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
+              onclick="document.getElementById('beneficios').scrollIntoView({behavior:'smooth'})">
               Conocer más
             </button>
             <button class="btn btn-outline" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
@@ -122,7 +127,7 @@
       </div>
     </section>
 
-    <section id="beneficios">
+    <section id="beneficios" class="section-bg-gradient">
       <div class="container">
         <div class="section-header animate-on-scroll">
           <div>
@@ -192,8 +197,14 @@
       </div>
     </section>
 
-    <section id="modulos">
-      <div class="container">
+    <section id="modulos" class="section-modules-bg">
+      <div class="modules-bg-shapes">
+        <div class="module-shape shape-1"></div>
+        <div class="module-shape shape-2"></div>
+        <div class="module-shape shape-3"></div>
+        <div class="module-shape shape-4"></div>
+      </div>
+      <div class="container relative-z2">
         <div class="section-header animate-on-scroll">
           <div>
             <h2>Módulos de Sissgo+</h2>
@@ -205,63 +216,75 @@
         </div>
         <div class="cards-grid">
           <article class="card animate-on-scroll">
-            <div class="card-icon"><i class="bi bi-grid-fill"></i></div>
-            <h3>Gestión integral</h3>
+            <div class="card-header-flex">
+              <h3>Gestión integral</h3>
+              <div class="card-icon"><i class="bi bi-grid-fill"></i></div>
+            </div>
             <p>
               Centraliza contabilidad, asistencial, nómina y pacientes en un único sistema
               web con acceso seguro para cada rol.
             </p>
-            <span class="card-tag">Todo en un solo lugar</span>
+            <!-- <span class="card-tag">Todo en un solo lugar</span> -->
           </article>
 
           <article class="card animate-on-scroll">
-            <div class="card-icon"><i class="bi bi-calendar-check"></i></div>
-            <h3>Autogestión de citas</h3>
+            <div class="card-header-flex">
+              <h3>Autogestión de citas</h3>
+              <div class="card-icon"><i class="bi bi-calendar-check"></i></div>
+            </div>
             <p>
               Permite que los pacientes agenden, confirmen y consulten sus citas en línea
               desde cualquier dispositivo.
             </p>
-            <span class="card-tag">Portal del paciente</span>
+            <!-- <span class="card-tag">Portal del paciente</span> -->
           </article>
 
           <article class="card animate-on-scroll">
-            <div class="card-icon"><i class="bi bi-whatsapp"></i></div>
-            <h3>Recordatorios por WhatsApp</h3>
+            <div class="card-header-flex">
+              <h3>Recordatorios por WhatsApp</h3>
+              <div class="card-icon"><i class="bi bi-whatsapp"></i></div>
+            </div>
             <p>
               Envía recordatorios automáticos de citas para reducir inasistencias y
               mejorar la ocupación de agenda.
             </p>
-            <span class="card-tag">Comunicación automatizada</span>
+            <!-- <span class="card-tag">Comunicación automatizada</span> -->
           </article>
 
           <article class="card animate-on-scroll">
-            <div class="card-icon"><i class="bi bi-file-earmark-medical"></i></div>
-            <h3>Historias clínicas</h3>
+            <div class="card-header-flex">
+              <h3>Historias clínicas</h3>
+              <div class="card-icon"><i class="bi bi-file-earmark-medical"></i></div>
+            </div>
             <p>
               Registra y consulta historias clínicas en la nube con accesos controlados y
               trazabilidad de cambios.
             </p>
-            <span class="card-tag">Información siempre disponible</span>
+            <!-- <span class="card-tag">Información siempre disponible</span> -->
           </article>
 
           <article class="card animate-on-scroll">
-            <div class="card-icon"><i class="bi bi-receipt"></i></div>
-            <h3>Facturación Electrónica</h3>
+            <div class="card-header-flex">
+              <h3>Facturación Electrónica</h3>
+              <div class="card-icon"><i class="bi bi-receipt"></i></div>
+            </div>
             <p>
               Emite facturas electrónicas y gestiona su estado desde el sistema, con
               soporte para reportes y trazabilidad del proceso.
             </p>
-            <span class="card-tag">Cumplimiento normativo</span>
+            <!-- <span class="card-tag">Cumplimiento normativo</span> -->
           </article>
 
           <article class="card animate-on-scroll">
-            <div class="card-icon"><i class="bi bi-people-fill"></i></div>
-            <h3>Nómina Electrónica</h3>
+            <div class="card-header-flex">
+              <h3>Nómina Electrónica</h3>
+              <div class="card-icon"><i class="bi bi-people-fill"></i></div>
+            </div>
             <p>
               Gestiona tu talento humano en salud con información centralizada para
               nómina y reportes.
             </p>
-            <span class="card-tag">Talento humano ordenado</span>
+            <!-- <span class="card-tag">Talento humano ordenado</span> -->
           </article>
         </div>
       </div>
@@ -344,7 +367,7 @@
       </div>
     </section>
 
-    <section id="soporte">
+    <!-- <section id="soporte">
       <div class="container">
         <div class="support-section animate-on-scroll">
           <div class="support-content">
@@ -357,7 +380,7 @@
           </a>
         </div>
       </div>
-    </section>
+    </section> -->
 
   </main>
 
@@ -365,7 +388,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="logotipo.png" alt="Sissgo Logo" class="logo-img" style="height: 40px; width: auto;">
+          <img src="logo-solo.png" alt="Sissgo Logo" class="logo-img" style="height: 40px; width: auto;">
           <p>Software web integral diseñado específicamente para transformar la gestión de IPS y clínicas en Colombia.</p>
         </div>
         

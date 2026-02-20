@@ -1,6 +1,5 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// EmailJS Initialization
 (function() {
   emailjs.init("FDGyqbqYUXgGs5bhV");
 })();
@@ -29,7 +28,6 @@ if (contactForm) {
       minute: '2-digit' 
     });
 
-    // Parámetros adicionales para EmailJS
      const templateParams = {
        name: this.name.value,
        email: this.email.value,
@@ -38,7 +36,6 @@ if (contactForm) {
        time: timeString
      };
 
-    // Reemplaza 'TU_SERVICE_ID' y 'TU_TEMPLATE_ID' con tus IDs de EmailJS
      emailjs.send('service_tvux3v2', 'template_3o8dhkc', templateParams)
       .then(function() {
         statusDiv.style.color = 'var(--green)';
@@ -70,24 +67,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-// Navbar Scroll Logic
-let lastScrollTop = 0;
-const header = document.querySelector('header');
-
-window.addEventListener('scroll', function() {
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  
-  if (scrollTop > lastScrollTop && scrollTop > 100) {
-    // Scrolling down
-    header.classList.add('nav-hidden');
-  } else {
-    // Scrolling up
-    header.classList.remove('nav-hidden');
-  }
-  
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-}, { passive: true });
-
 // Counter Animation
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -96,7 +75,6 @@ const counterObserver = new IntersectionObserver((entries) => {
       const target = +counter.getAttribute('data-target');
       const prefix = counter.getAttribute('data-prefix') || '';
       const suffix = counter.getAttribute('data-suffix') || '';
-      // Aumentamos la duración a 3500ms (3.5 segundos) para que sea más lento
       const speed = 3500; 
       const increment = target / (speed / 16); 
       
@@ -113,8 +91,6 @@ const counterObserver = new IntersectionObserver((entries) => {
         }
       };
       
-      // Añadimos un pequeño delay de 500ms antes de empezar a contar
-      // para asegurar que el elemento ya es visible
       setTimeout(() => {
         updateCount();
       }, 500);
@@ -129,3 +105,69 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.counter').forEach(counter => {
   counterObserver.observe(counter);
 });
+
+// Header Hide on Scroll
+let lastScrollTop = 0;
+const header = document.querySelector('header');
+const delta = 5;
+
+if (header) {
+  window.addEventListener('scroll', function() {
+    const currentScroll = window.scrollY || document.documentElement.scrollTop;
+    
+    // Ignorar scroll elástico negativo (iOS)
+    if (currentScroll < 0) return;
+
+    if (Math.abs(lastScrollTop - currentScroll) <= delta) return;
+
+    if (currentScroll > lastScrollTop && currentScroll > header.offsetHeight) {
+      // Scroll Down
+      header.classList.add('hidden');
+    } else {
+      // Scroll Up
+      header.classList.remove('hidden');
+    }
+    
+    lastScrollTop = currentScroll;
+  });
+}
+
+// Mobile Menu Toggle
+const menuBtn = document.querySelector('.mobile-menu-btn');
+const navMenu = document.querySelector('.nav-menu');
+
+if (menuBtn && navMenu) {
+  menuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    
+    // Cambiar icono de hamburguesa a X
+    const icon = menuBtn.querySelector('i');
+    if (navMenu.classList.contains('active')) {
+      icon.classList.remove('bi-list');
+      icon.classList.add('bi-x-lg');
+    } else {
+      icon.classList.remove('bi-x-lg');
+      icon.classList.add('bi-list');
+    }
+  });
+
+  // Cerrar menú al hacer click en un enlace
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      const icon = menuBtn.querySelector('i');
+      icon.classList.remove('bi-x-lg');
+      icon.classList.add('bi-list');
+    });
+  });
+
+  // Cerrar al hacer click fuera
+  document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !menuBtn.contains(e.target) && navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      const icon = menuBtn.querySelector('i');
+      icon.classList.remove('bi-x-lg');
+      icon.classList.add('bi-list');
+    }
+  });
+}
